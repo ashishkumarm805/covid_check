@@ -1,0 +1,212 @@
+{
+    "questions": [
+        {
+            "number": 1,
+            "question": "yourgender",
+            "answers": [
+                "male",
+                "female",
+                "others"
+            ],
+            "scores":
+            [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "number": 2,
+            "question": "temperature",
+            "answers": [
+                "normal",
+                "fever",
+                "high_fever",
+                "noidea"
+            ],
+            "scores":
+            [
+                1,
+                2,
+                3,
+                2
+            ]
+        },
+        {
+            "number": 3,
+            "question": "sneeze",
+            "answers": [
+                "yes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 4,
+            "question": "cough",
+            "answers": [
+                "drycough",
+                "wetcough",
+                "none"
+            ],
+            "scores":
+            [
+                2,
+                1,
+                0
+            ]
+        },
+        {
+            "number": 5,
+            "question": "sorethroat",
+            "answers": [
+                "tyes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 6,
+            "question": "diar",
+            "answers": [
+                "tyes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 7,
+            "question": "head",
+            "answers": [
+                "tyes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 8,
+            "question": "severweak",
+            "answers": [
+                "tyes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 9,
+            "question": "difficulty",
+            "answers": [
+                "tyes",
+                "no"
+            ],
+            "scores":
+            [
+                2,
+                0
+            ]
+        },
+        {
+            "number": 10,
+            "question": "travel",
+            "answers": [
+                "nohistory",
+                "nocontact",
+                "nojourney",
+                "hadcontact"
+            ],
+            "scores":
+            [
+                0,
+                1,
+                2,
+                3
+            ]
+        },
+        {
+			"number": 11,
+			"question": "specialconditions",
+			"answers": [
+				"diabetes",
+				"highbp",
+				"heart",
+				"kidney",
+				"lung",
+				"stroke",
+				"immune",
+				"none"
+			],
+			"scores":
+			[
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2,
+				0
+            ]
+        },
+        {
+			"number": 12,
+			"question": "conditionsymp",
+			"answers": [
+				"improved",
+				"NC",
+				"worsened",
+				"cworsened"
+			],
+			"scores":
+			[
+				1,
+				2,
+				3,
+				4
+            ]
+		}
+    ],
+    "results": [
+        "low",
+        "medium",
+        "high"
+    ],
+    "precautions": [
+        "precautions1",
+        "precautions2",
+        "precautions3",
+        "precautions4",
+        "precautions5",
+        "precautions6",
+        "precautions7",
+        "precautions8",
+        "precautions9",
+        "precautions10",
+        "precautions11",
+        "precautions12",
+        "precautions13",
+        "precautions14",
+        "precautions15",
+        "precautions16",
+        "precautions17"
+    ]
+}

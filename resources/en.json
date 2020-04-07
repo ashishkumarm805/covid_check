@@ -1,0 +1,187 @@
+{
+	"welcome": "Hello! Our Corona Virus Self-Assessment Scan was developed based on the guidance of WHO and the Government of India, MHFW. This contact should not be taken as an expert medical advice. Any information you share with us will be kept confidential.",
+	"yourage": "Your age?",
+	"questions": [
+		{
+			"number": 1,
+			"question": "yourage",
+			"answers":[
+				"child",
+				"teen",
+				"work",
+				"aged",
+				"senior",
+				"ssenior"
+			],
+			"scores":
+			[
+				2,
+				1,
+				1,
+				2,
+				2,
+				2
+			]
+		},
+		{
+			"number": 2,
+			"question": "yourgender",
+			"answers": [
+				"male",
+				"female",
+				"others"
+			],
+			"scores":
+			[
+				1,
+				1,
+				1
+			]
+
+		},
+		{
+			"number": 3,
+			"question": "temperature",
+			"answers": [
+				"normal",
+				"fever",
+				"high_fever",
+				"noidea"
+			],
+			"scores":
+			[
+				1,
+				2,
+				3,
+				2
+			]
+		},
+		{
+			"number": 4,
+			"question": "syptomscan",
+			"answers": [
+				"drycough",
+				"smell",
+				"sorethroat",
+				"weak",
+				"appetite",
+				"none"
+			],
+			"scores":
+			[
+				1,
+				1,
+				1,
+				1,
+				1,
+				0
+			]
+		},
+		{
+			"number": 5,
+			"question": "additional",
+			"answers": [
+				"cough",
+				"breathlessness",
+				"difficulty",
+				"drowsy",
+				"painchest",
+				"severweak",
+				"none"
+			],
+			"scores":
+			[
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				0
+			]
+		},
+		{
+			"number": 6,
+			"question": "travel",
+			"answers": [
+				"nohistory",
+				"nocontact",
+				"nojourney",
+				"hadcontact"
+			],
+			"scores":
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		},
+		{
+			"number": 7,
+			"question": "specialconditions",
+			"answers": [
+				"diabetes",
+				"highbp",
+				"heart",
+				"kidney",
+				"lung",
+				"stroke",
+				"immune",
+				"none"
+			],
+			"scores":
+			[
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2,
+				0
+			]
+		},
+		{
+			"number": 8,
+			"question": "conditionsymp",
+			"answers": [
+				"improved",
+				"NC",
+				"worsened",
+				"cworsened"
+			],
+			"scores":
+			[
+				1,
+				2,
+				3,
+				4
+			]
+		}
+	],
+	"results": [
+        "low",
+        "medium",
+        "high"
+    ],
+	"precautions": [
+		"precautions1",
+		"precautions2",
+		"precautions3",
+		"precautions4",
+		"precautions5",
+		"precautions6",
+		"precautions7",
+		"precautions8",
+		"precautions9",
+		"precautions10",
+		"precautions11",
+		"precautions12",
+		"precautions13",
+		"precautions14",
+		"precautions15",
+		"precautions16",
+		"precautions17"
+	]
+}
