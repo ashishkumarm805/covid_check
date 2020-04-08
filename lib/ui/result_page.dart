@@ -2,6 +2,7 @@ import 'package:covid_check/ui/precaution_page.dart';
 import 'package:covid_check/ui/questionPage.dart';
 import 'package:covid_check/utils/appTranslations.dart';
 import 'package:flutter/material.dart';
+import 'package:covid_check/utils/scoring.dart';
 
 import '../repo.dart';
 
@@ -46,101 +47,81 @@ class _ResPageState extends State<ResPage> {
                     for (int i = 2; i < 9; i++) {
                       result += widget.score[i];
                     }
+                    String xres;
                     int temp = widget.score[1];
                     int journey = widget.score[9];
                     int severity = widget.score[11];
                     int history = widget.score[10];
-
-                    if (temp == 1 &&
-                        (journey == 0 || journey == 1) &&
-                        severity == 0 &&
-                        history < 2 &&
-                        result < 2) {
-                      return Text(
-                        AppTranslations.of(context).text("low"),
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
-                    } 
-                    if (temp == 2 && (journey == 0 ||
-                        journey == 1) &&
-                            (severity == 0 || severity == 1) &&
-                            history < 2 &&
-                            (result >= 2 && result <= 6)) {
-                      return Text(
-                        AppTranslations.of(context).text("medium"),
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
+                    if (temp == 1) {
+                      if (result == 0 && severity == 0 && history < 2) {
+                        xres = "low";
+                      } else if (result == 1 && severity == 1 && history < 2) {
+                        xres = "low";
+                      } else if (result <= 3 && severity == 1 && journey == 0) {
+                        xres = "medium";
+                      } else if (result == 0 && severity == 0 && journey > 2) {
+                        xres = "medium";
+                      }
                     }
-                    if((temp == 2 || temp == 3) && (journey == 0 ||
-                        journey == 1) &&
-                            severity > 1&&
-                            history < 2 &&
-                            result > 6) {
-                      return Text(
-                        AppTranslations.of(context).text("high"),
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
+                    //temperature is fever
+                    else if (temp == 2) {
+                      if (result < 3 && severity == 2 && journey == 0) {
+                        xres = "medium";
+                      } else if (result <= 3 && severity == 1 && journey == 0) {
+                        xres = "medium";
+                      } else if (result >= 3 && severity == 2 && journey > 2) {
+                        xres = "high";
+                      }
                     }
-                        if((temp == 2 || temp == 3) && (journey == 0 ||
-                        journey == 1) &&
-                            severity > 1&&
-                            history >= 2 &&
-                            result > 6) {
-                      return Text(
-                        AppTranslations.of(context).text("high") + AppTranslations.of(context).text("isolation"),
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
+                    //temperature is high fever
+                    else if (temp == 3) {
+                      if (result <= 3 && severity == 1 && journey == 0) {
+                        xres = "medium";
+                      } else if (result < 3 && severity == 2 && journey == 0) {
+                        xres = "medium";
+                      } else if (result >= 3 && severity == 2 && journey > 2) {
+                        xres = "high";
+                      }
                     }
-                    if((temp == 2 || temp == 3) && (journey == 0 ||
-                        journey == 1) &&
-                            severity == 1&&
-                            history < 2 &&
-                            result > 6) {
-                      return Text(
-                        AppTranslations.of(context).text("medium") + AppTranslations.of(context).text("isolation"),
-                        style: TextStyle(
+                    switch (xres) {
+                      case "low":
+                        return Text(
+                          AppTranslations.of(context).text("low"),
+                          style: TextStyle(
                             color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
-                    }
-                    if((temp == 2 || temp == 3) && (
-                        journey == 2) &&
-                            (severity == 1 || severity == 0)&&
-                            history < 2 &&
-                            result > 2) {
-                      return Text(
-                        AppTranslations.of(context).text("medium") + AppTranslations.of(context).text("isolation"),
-                        style: TextStyle(
+                            fontSize: 30.0,
+                          ),
+                        );
+                        break;
+                      case "high":
+                        return Text(
+                          AppTranslations.of(context).text("high") +
+                              AppTranslations.of(context).text("isolation"),
+                          style: TextStyle(
                             color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
-                    }
-                    if((temp == 1) && (
-                        journey > 2) &&
-                            severity == 1&&
-                            history < 2 &&
-                            result > 6) {
-                      return Text(
-                        AppTranslations.of(context).text("high") + AppTranslations.of(context).text("isolation"),
-                        style: TextStyle(
+                            fontSize: 30.0,
+                          ),
+                        );
+                        break;
+                      case "medium":
+                        return Text(
+                          AppTranslations.of(context).text("medium") +
+                              AppTranslations.of(context).text("isolation"),
+                          style: TextStyle(
                             color: Colors.green,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 40.0),
-                      );
+                            fontSize: 30.0,
+                          ),
+                        );
+                        break;
+                      default:
+                        return Text(
+                          AppTranslations.of(context).text("low") +
+                              AppTranslations.of(context).text("isolation"),
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 30.0,
+                          ),
+                        );
                     }
                   },
                 ),
