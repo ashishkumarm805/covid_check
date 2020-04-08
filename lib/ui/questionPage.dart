@@ -51,8 +51,7 @@ class _QuestionPageState extends State<QuestionPage> {
         if (inputs[index] != true) {
             inputs[index] = val;
             _score += widget.repo.questions[_index].scores[index];
-            scores.add(_score);
-            print(scores.length);
+            
           }
       }
     });
@@ -126,7 +125,10 @@ class _QuestionPageState extends State<QuestionPage> {
 
   void incrementIndex() {
     setState(() {
-      
+      if(_index == 10){
+        scores.add(_score);
+        print(scores.length);
+      }
       if (_index < widget.len - 1) {
         inputs.clear();
         if(!scores[_index].isNaN){

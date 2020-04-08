@@ -31,7 +31,7 @@ class _ResPageState extends State<ResPage> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
-                  "${widget.name}"+ AppTranslations.of(context).text("report"),
+                  "${widget.name}" + AppTranslations.of(context).text("report"),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
@@ -43,18 +43,32 @@ class _ResPageState extends State<ResPage> {
                 child: FutureBuilder(
                   builder: (context, snapshot) {
                     int result = 0;
-                    for(int i=2;i<9;i++){
-                      result += widget.score[i] ;
+                    for (int i = 2; i < 9; i++) {
+                      result += widget.score[i];
                     }
+                    int temp = widget.score[1];
+                    int journey = widget.score[9];
+                    int severity = widget.score[11];
+                    int history = widget.score[10];
 
-                    // return Text(
-                    //   "${result}",
-                    //   style: TextStyle(
-                    //       color: Colors.green,
-                    //       fontWeight: FontWeight.w900,
-                    //       fontSize: 40.0),
-                    // );
-                    if (widget.score[1] <= 2 && result >= 2 && result <=8 && (widget.score[9] >= 2 && widget.score[10] < 4 && widget.score[11] <= 2 ) ) {
+                    if (temp == 1 &&
+                        (journey == 0 || journey == 1) &&
+                        severity == 0 &&
+                        history < 2 &&
+                        result < 2) {
+                      return Text(
+                        AppTranslations.of(context).text("low"),
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 40.0),
+                      );
+                    } 
+                    if (temp == 2 && (journey == 0 ||
+                        journey == 1) &&
+                            (severity == 0 || severity == 1) &&
+                            history < 2 &&
+                            (result >= 2 && result <= 6)) {
                       return Text(
                         AppTranslations.of(context).text("medium"),
                         style: TextStyle(
@@ -62,19 +76,68 @@ class _ResPageState extends State<ResPage> {
                             fontWeight: FontWeight.w900,
                             fontSize: 40.0),
                       );
-                    } else if (result >= 9 && (widget.score[9] >= 3 && widget.score[10] > 2 && widget.score[11] > 2 )) {
+                    }
+                    if((temp == 2 || temp == 3) && (journey == 0 ||
+                        journey == 1) &&
+                            severity > 1&&
+                            history < 2 &&
+                            result > 6) {
                       return Text(
                         AppTranslations.of(context).text("high"),
                         style: TextStyle(
-                            color: Colors.orange,
+                            color: Colors.green,
                             fontWeight: FontWeight.w900,
                             fontSize: 40.0),
                       );
-                    } else {
+                    }
+                        if((temp == 2 || temp == 3) && (journey == 0 ||
+                        journey == 1) &&
+                            severity > 1&&
+                            history >= 2 &&
+                            result > 6) {
                       return Text(
-                        AppTranslations.of(context).text("low"),
+                        AppTranslations.of(context).text("high") + AppTranslations.of(context).text("isolation"),
                         style: TextStyle(
-                            color: Colors.red,
+                            color: Colors.green,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 40.0),
+                      );
+                    }
+                    if((temp == 2 || temp == 3) && (journey == 0 ||
+                        journey == 1) &&
+                            severity == 1&&
+                            history < 2 &&
+                            result > 6) {
+                      return Text(
+                        AppTranslations.of(context).text("medium") + AppTranslations.of(context).text("isolation"),
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 40.0),
+                      );
+                    }
+                    if((temp == 2 || temp == 3) && (
+                        journey == 2) &&
+                            (severity == 1 || severity == 0)&&
+                            history < 2 &&
+                            result > 2) {
+                      return Text(
+                        AppTranslations.of(context).text("medium") + AppTranslations.of(context).text("isolation"),
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 40.0),
+                      );
+                    }
+                    if((temp == 1) && (
+                        journey > 2) &&
+                            severity == 1&&
+                            history < 2 &&
+                            result > 6) {
+                      return Text(
+                        AppTranslations.of(context).text("high") + AppTranslations.of(context).text("isolation"),
+                        style: TextStyle(
+                            color: Colors.green,
                             fontWeight: FontWeight.w900,
                             fontSize: 40.0),
                       );

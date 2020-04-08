@@ -82,5 +82,6 @@
     "aged": "40 - 60 Years",
     "senior": "60 - 80 Years",
     "ssenior": "> 80 Years",
-    "report" : "'s COVID-19 Assessment Report"
+    "report" : "'s COVID-19 Assessment Report",
+    "isolation" : "(Should be in Quarantine)"
 }
