@@ -174,14 +174,16 @@
 				"improved",
 				"NC",
 				"worsened",
-				"cworsened"
+                "cworsened",
+                "none"
 			],
 			"scores":
 			[
 				1,
 				2,
 				3,
-				4
+                4,
+                0
             ]
 		}
     ],
