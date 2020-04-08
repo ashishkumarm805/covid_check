@@ -54,7 +54,7 @@ class _ResPageState extends State<ResPage> {
                     //       fontWeight: FontWeight.w900,
                     //       fontSize: 40.0),
                     // );
-                    if (widget.score[1] <= 2 && result >= 2 && result <=4 && (widget.score[9] <= 2 && widget.score[10] <= 2 && widget.score[11] <= 2 ) ) {
+                    if (widget.score[1] <= 2 && result >= 2 && result <=8 && (widget.score[9] <= 2 && widget.score[10] < 4 && widget.score[11] <= 2 ) ) {
                       return Text(
                         AppTranslations.of(context).text("medium"),
                         style: TextStyle(
@@ -62,7 +62,7 @@ class _ResPageState extends State<ResPage> {
                             fontWeight: FontWeight.w900,
                             fontSize: 40.0),
                       );
-                    } else if (result >= 7 && (widget.score[9] > 2 && widget.score[10] > 2 && widget.score[11] > 2 )) {
+                    } else if (result >= 9 && (widget.score[9] > 2 && widget.score[10] > 2 && widget.score[11] > 2 )) {
                       return Text(
                         AppTranslations.of(context).text("high"),
                         style: TextStyle(
