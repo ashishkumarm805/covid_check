@@ -47,12 +47,11 @@ class _QuestionPageState extends State<QuestionPage> {
             print(scores.length);
           }
         }
-      }else{
+      } else {
         if (inputs[index] != true) {
-            inputs[index] = val;
-            _score += widget.repo.questions[_index].scores[index];
-            
-          }
+          inputs[index] = val;
+          _score += widget.repo.questions[_index].scores[index];
+        }
       }
     });
   }
@@ -125,31 +124,24 @@ class _QuestionPageState extends State<QuestionPage> {
 
   void incrementIndex() {
     setState(() {
-      if(_index == 10){
+      if (_index == 10) {
         scores.add(_score);
         print(scores.length);
       }
       if (_index < widget.len - 1) {
         inputs.clear();
-        if(!scores[_index].isNaN){
-        _index = _index + 1;
-        if (_index < widget.len) {
-          for (int i = 0;
-              i < widget.repo.questions[_index].answers.length;
-              i++) {
-            inputs.add(false);
+        if (!scores[_index].isNaN) {
+          _index = _index + 1;
+          if (_index < widget.len) {
+            for (int i = 0;
+                i < widget.repo.questions[_index].answers.length;
+                i++) {
+              inputs.add(false);
+            }
           }
         }
-      }
-      }
-     else {
-        navigateToSubPage(
-            context,
-            ResPage(
-                score: scores,
-                age: widget.age,
-                name: widget.name,
-                repo: widget.repo));
+      } else {
+       navigateToSubPage(context, ResPage(age: widget.age,repo: widget.repo,score: scores,name:widget.name));
       }
     });
   }
