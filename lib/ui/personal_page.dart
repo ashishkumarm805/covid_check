@@ -1,7 +1,6 @@
 import 'package:covid_check/ui/quizPage.dart';
 import 'package:covid_check/utils/appTranslations.dart';
 import 'package:flutter/material.dart';
-import 'package:flushbar/flushbar.dart';
 
 class AboutPage extends StatefulWidget {
   @override
@@ -77,9 +76,6 @@ class _AboutPageState extends State<AboutPage> {
                                   age: int.parse(ageController.text),
                                   name: nameController.text));
                         }
-                        else{
-                          showSimpleFlushbar(context);
-                        }
                       }
                     },
                     child: Text('Submit'),
@@ -91,17 +87,5 @@ class _AboutPageState extends State<AboutPage> {
         ),
       ),
     );
-  }
-  void showSimpleFlushbar(BuildContext context) {
-    Flushbar(
-      // There is also a messageText property for when you want to
-      // use a Text widget and not just a simple String
-      message: "Age must be greater than 0 and lesser than 120",
-      backgroundColor: Colors.red,
-      icon: Icon(Icons.warning,),
-      // Even the button can be styled to your heart's content
-      duration: Duration(seconds: 3),
-      // Show it with a cascading operator
-    )..show(context);
   }
 }

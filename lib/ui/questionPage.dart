@@ -42,7 +42,7 @@ class _QuestionPageState extends State<QuestionPage> {
         if (!inputs.contains(true)) {
           if (inputs[index] != true) {
             inputs[index] = val;
-            _score += widget.repo.questions[_index].scores[index];
+            _score = widget.repo.questions[_index].scores[index];
             scores.add(_score);
             print(scores.length);
           }
