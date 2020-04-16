@@ -21,13 +21,40 @@ class _ResPageState extends State<ResPage> {
   @override
   Widget build(BuildContext context) {
     int result = 0;
-    for(int i=2;i<9;i++){
+    for (int i = 2; i < 9; i++) {
       result += widget.score[i];
     }
     print(widget.score);
-    bool low = (widget.score[1] == 1 && result < 2 && widget.score[9] == 0 && widget.score[10] < 3 && (widget.score[11] == 0 || widget.score[11] == 1) || (widget.score[1] == 2 && result < 4 && widget.score[9] == 0 && widget.score[10] < 3 && (widget.score[11] == 0 || widget.score[11] == 1)));
-    bool high = (widget.score[1] == 1 && result < 2 && widget.score[9] > 1 && widget.score[10] < 3 && (widget.score[11] == 0 || widget.score[11] == 1)||(widget.score[1] == 2 && (result > 4) && widget.score[9] == 0 && widget.score[10] < 3 && (widget.score[11] == 2 || widget.score[11] == 3)));
-    bool medium = widget.score[1] == 2 && (result >= 2 && result <= 4) && widget.score[9] == 0 && widget.score[10] < 3 && (widget.score[11] == 2 || widget.score[11] == 3);
+    bool low = (widget.score[1] == 1 &&
+            result < 2 &&
+            widget.score[9] == 0 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 0 || widget.score[11] == 1) ||
+        (widget.score[1] == 2 &&
+            result < 4 &&
+            widget.score[9] == 0 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 0 || widget.score[11] == 1)));
+    bool high = (widget.score[1] == 1 &&
+            result < 2 &&
+            widget.score[9] > 1 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 0 || widget.score[11] == 1) ||
+        (widget.score[1] >= 2 &&
+            (result > 4) &&
+            widget.score[9] == 0 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 2 || widget.score[11] == 3)));
+    bool medium = ((widget.score[1] >= 2 &&
+            (result >= 2 && result <= 4) &&
+            widget.score[9] == 0 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 2 || widget.score[11] == 3)) ||
+        (widget.score[1] == 1 &&
+            (result > 2 && result < 4) &&
+            widget.score[9] == 0 &&
+            widget.score[10] < 3 &&
+            (widget.score[11] == 0 || widget.score[11] == 1)));
     return Scaffold(
       appBar: AppBar(
         title: Text("Results"),
@@ -51,30 +78,38 @@ class _ResPageState extends State<ResPage> {
               Center(
                 child: Conditioned(
                   cases: [
-                    Case(low, 
-                    builder: ()=>Text(AppTranslations.of(context).text("low"),
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30.0
-                    ),)),
-                    Case(medium, 
-                    builder: ()=>Text(AppTranslations.of(context).text("medium"),
-                     style: TextStyle(
-                      color: Color(0XE8A820),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30.0
-                    ))),
-                    Case(high, 
-                    builder: ()=>Text(AppTranslations.of(context).text("high"),
-                     style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 30.0
-                    ))),
+                    Case(
+                      low,
+                      builder: () => Text(
+                        AppTranslations.of(context).text("low"),
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30.0),
+                      ),
+                    ),
+                    Case(
+                      medium,
+                      builder: () => Text(
+                        AppTranslations.of(context).text("medium"),
+                        style: TextStyle(
+                            color: Color(0XE8A820),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30.0),
+                      ),
+                    ),
+                    Case(
+                      high,
+                      builder: () => Text(
+                        AppTranslations.of(context).text("high"),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30.0),
+                      ),
+                    ),
                   ],
                   defaultBuilder: () => Text('not defined'),
-                  
                 ),
               ),
               Padding(

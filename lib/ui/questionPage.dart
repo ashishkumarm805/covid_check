@@ -67,9 +67,13 @@ class _QuestionPageState extends State<QuestionPage> {
           borderRadius: BorderRadius.circular(15.0),
         ),
         color: Colors.indigoAccent,
-        child: Scrollbar(
-          child: Stack(fit: StackFit.expand, children: <Widget>[
-            Padding(
+        child: SingleChildScrollView(
+          child: 
+            Container(
+              child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                 Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 30, 50),
               child: Text(
                 textLocalizer(context, widget.repo.questions[_index].question),
@@ -80,14 +84,10 @@ class _QuestionPageState extends State<QuestionPage> {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
                 SizedBox(
-                  height: 400.0,
-                  child: Scrollbar(
+                  height: 200.0,
                     child: ListView.builder(
-                      padding: EdgeInsets.fromLTRB(30, 100, 20, 20),
+                      padding: EdgeInsets.fromLTRB(30, 50, 20, 20),
                       itemCount: widget.repo.questions[_index].answers.length,
                       itemBuilder: (context, i) {
                         return new CheckboxListTile(
@@ -106,7 +106,6 @@ class _QuestionPageState extends State<QuestionPage> {
                       },
                     ),
                   ),
-                ),
                 RaisedButton(
                   color: Colors.lightBlue,
                   shape: RoundedRectangleBorder(
@@ -116,7 +115,7 @@ class _QuestionPageState extends State<QuestionPage> {
                 ),
               ],
             ),
-          ]),
+          ),
         ),
       ),
     );
